@@ -1,12 +1,19 @@
 const express = require('express');
 const cors = require('cors');
 //const requireDir = require('require-dir');
+//Parte da autenticação
+const bodyParser = require('body-parser');
 
 const mongoose = require('mongoose');
 //Iniciando o App
 const app = express();
-app.use(express.json());
+// app.use(express.json());
 app.use(cors());
+
+//Parte da autenticação
+
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 
 //app.use(cors());
@@ -18,26 +25,29 @@ mongoose.connect('mongodb://localhost:27017/nodeapi', { useNewUrlParser: true});
 
 require('./src/app/models/Product');
 require('./src/app/models/Qualificador');
-//requireDir('./src/app/models');
-//const Product = mongoose.model('Product');
+require('./src/app/models/Usuario');
+
+
 const Qualificador = mongoose.model('Qualificador');
 
 //Rotas
-
 app.use("/api", require("./src/routes"));
+
 
 app.listen(3000, (req, res) => {
     console.log("OK");
 });
 
 
+
+
 //Primeira rota
 
-app.get("/", (req, res)=>{
-    Qualificador.create({title: 'testeQualificador', 
-});
-    return res.send("Hello, Rose!");
-});
+// app.get("/", (req, res)=>{
+//     Qualificador.create({title: 'testeQualificador', 
+// });
+//     return res.send("Hello, Rose!");
+// });
 
 /*
 module.exports = app;

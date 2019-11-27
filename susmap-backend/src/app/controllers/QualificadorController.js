@@ -17,7 +17,7 @@ module.exports = {
     },
 
     async store(req, res){
-        //console.log(req.body);
+
         const { productId: product, title }  = req.body;
         const qualificador = await Qualificador.create({product, title});
 
