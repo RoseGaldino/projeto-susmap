@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const Qualificador = mongoose.model('Qualificador');
-const Product = mongoose.model('Product');
+const Sintoma = mongoose.model('Sintoma');
 
 module.exports = {
     async index(req, res){
@@ -18,15 +18,15 @@ module.exports = {
 
     async store(req, res){
 
-        const { productId: product, title }  = req.body;
-        const qualificador = await Qualificador.create({product, title});
+        const { sintomaId: sintoma, title }  = req.body;
+        const qualificador = await Qualificador.create({sintoma, title});
 
         await qualificador.save();
 
-        const productById = await Product.findById(product);
+        const sintomaById = await Product.findById(sintoma);
 
-        productById.qualificadores.push(qualificador)
-        productById.save();
+        sintomaById.qualificadores.push(qualificador)
+        sintomaById.save();
 
 
 
