@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 //const requireDir = require('require-dir');
+
 //Parte da autenticação
 const bodyParser = require('body-parser');
 
@@ -11,7 +12,6 @@ const app = express();
 app.use(cors());
 
 //Parte da autenticação
-
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
@@ -23,23 +23,18 @@ app.use(bodyParser.json());
 //mongoose.connect('mongodb://adminrose@roseadmin');
 mongoose.connect('mongodb://localhost:27017/nodeapi', { useNewUrlParser: true});
 
-require('./src/app/models/Product');
+require('./src/app/models/Sintoma');
 require('./src/app/models/Qualificador');
 require('./src/app/models/Usuario');
-
 
 const Qualificador = mongoose.model('Qualificador');
 
 //Rotas
 app.use("/api", require("./src/routes"));
 
-
 app.listen(3000, (req, res) => {
     console.log("OK");
 });
-
-
-
 
 //Primeira rota
 

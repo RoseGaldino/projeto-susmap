@@ -5,9 +5,9 @@ const QualificadorSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    product :{
+    sintoma :{
         type:mongoose.Schema.Types.ObjectId,
-        ref:'Product'
+        ref:'Sintoma'
     }
 });
 

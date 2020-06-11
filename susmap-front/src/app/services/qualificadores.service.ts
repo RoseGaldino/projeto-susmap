@@ -13,6 +13,6 @@ export class QualificadoresService {
 
 
   getQualificadores(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/sintoma`);
+    return this.http.get<any>(`${this.baseUrl}/sintomas`);
   }
 }

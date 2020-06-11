@@ -17,20 +17,21 @@ module.exports = {
     },
 
     async store(req, res){
+        const { sintoma, title }  = req.body;
+        const sintomaById = await Sintoma.findById(sintoma);
 
-        const { sintomaId: sintoma, title }  = req.body;
-        const qualificador = await Qualificador.create({sintoma, title});
+        if(sintomaById){
+            const qualificador = await Qualificador.create({sintoma, title});
+            await qualificador.save();
+            await sintomaById.qualificadores.push(qualificador)
+            await sintomaById.save();
 
-        await qualificador.save();
-
-        const sintomaById = await Product.findById(sintoma);
-
-        sintomaById.qualificadores.push(qualificador)
-        sintomaById.save();
-
-
-
-        return res.json(qualificador);
+            res.status(200);
+            return res.json({'message':'Qualificador inserido com sucesso.'});
+        }else {
+            res.status(503);
+            return res.json({'message':'Sintoma não existente'});
+        }
     },
 
     async update(req, res){
@@ -40,8 +41,17 @@ module.exports = {
     },
 
     async destroy(req, res){
-        await Qualificador.findByIdAndRemove(req.params.id);
+        const qualificador = await Qualificador.findByIdAndRemove(req.params.id);
 
-        return res.send();
+        if(qualificador){
+            res.status(200);
+            return res.json({'message':'Qualificador removido com sucesso.'});
+        }else {
+            res.status(503);
+            return res.json({'message':'Qualificador não existente.'});
+        }
+
+        //return res.send();
+        
     }
 };
