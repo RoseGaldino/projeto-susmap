@@ -9,7 +9,9 @@ const UnidadesAtendimentoSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    
+    servicos:[{
+        type: mongoose.Schema.Types.ObjectId, ref:'Servico',
+    }]
 });
 
 mongoose.model('UnidadesAtendimento', UnidadesAtendimentoSchema);

@@ -26,8 +26,10 @@ mongoose.connect('mongodb://localhost:27017/nodeapi', { useNewUrlParser: true});
 require('./src/app/models/Sintoma');
 require('./src/app/models/Qualificador');
 require('./src/app/models/Usuario');
+require('./src/app/models/Servico');
 
 const Qualificador = mongoose.model('Qualificador');
+const Servico = mongoose.model('Servico');
 
 //Rotas
 app.use("/api", require("./src/routes"));
