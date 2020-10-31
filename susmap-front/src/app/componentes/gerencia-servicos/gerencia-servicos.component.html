@@ -1,0 +1,18 @@
+<h1 class="titulo">Gerenciador de Serviços</h1>
+
+<section class="box-unidades">
+
+   <div class="qualificador" *ngFor="let sintoma of this.sintomas">
+     <h3>{{ sintoma.title }}</h3>     
+     <select>
+        <option value="">Selecione</option>
+       <option value="" *ngFor="let qualificador of sintoma.qualificadores ">{{ qualificador.title }}</option>
+     </select>
+   </div>
+       <a routerLink="/unidade-atendimento" href="#">
+        <button type="submit" class="btn btn-primary">Próximo</button>
+       </a>
+       
+</section>
+
+

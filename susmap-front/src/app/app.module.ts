@@ -11,6 +11,7 @@ import { UnidadeAtendimentoComponent } from './componentes/unidade-atendimento/u
 import { TelaLoginComponent } from './componentes/tela-login/tela-login.component';
 import { CabecalhoComponent } from './componentes/cabecalho/cabecalho.component';
 import { CadastroComponent } from './componentes/cadastro/cadastro.component';
+import { GerenciaServicosComponent } from './componentes/gerencia-servicos/gerencia-servicos.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CadastroComponent } from './componentes/cadastro/cadastro.component';
     TelaLoginComponent,
     CabecalhoComponent,
     CadastroComponent,
+    GerenciaServicosComponent,
 
   ],
   imports: [
